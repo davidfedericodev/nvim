@@ -141,6 +141,21 @@ vim.opt.timeoutlen = 300
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
+-- Tab settings
+-- vim.opt.tabline = '%!v:lua.Tabline()'
+--
+-- function _G.Tabline()
+--   local s = ''
+--   for i = 1, vim.fn.tabpagenr '$' do
+--     local buflist = vim.fn.tabpagebuflist(i)
+--     local bufnr = buflist[vim.fn.tabpagewinnr(i)]
+--     local bufname = vim.fn.fnamemodify(vim.fn.bufname(bufnr), ':t')
+--     local hl = (i == vim.fn.tabpagenr()) and '%#TabLineSel#' or '%#TabLine#'
+--     s = s .. string.format('%%%dT%s %s ', i, hl, bufname)
+--   end
+--   return s
+-- end
+
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
@@ -207,6 +222,11 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+-- Tabs keymaps
+vim.keymap.set('n', '<Tab>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>c', ':bdelete<CR>', { noremap = true, silent = true }) -- Chiude il buffer attuale
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
