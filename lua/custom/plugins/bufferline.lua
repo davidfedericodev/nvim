@@ -7,7 +7,7 @@ return {
         mode = 'tabs', -- Usa i TAB invece dei buffer (se vuoi gestire buffer metti "buffers")
         show_buffer_close_icons = false,
         show_close_icon = false,
-        separator_style = 'thin',
+        separator_style = 'thick',
         diagnostics = 'nvim_lsp',
         always_show_bufferline = false,
       },
