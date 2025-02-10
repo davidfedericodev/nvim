@@ -19,7 +19,7 @@ return {
       'git_status', -- Aggiunge il supporto Git
     },
     window = {
-      position = 'float',
+      position = 'right',
       mappings = {
         ['t'] = 'open_tabnew',
       },

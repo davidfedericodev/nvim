@@ -226,7 +226,6 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- Tabs keymaps
 vim.keymap.set('n', '<Tab>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>c', ':bdelete<CR>', { noremap = true, silent = true }) -- Chiude il buffer attuale
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -271,6 +270,7 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy
 --
 --  You can press `?` in this menu for help. Use `:q` to close the window
+
 --
 --  To update plugins you can run
 --    :Lazy update
@@ -948,17 +948,17 @@ require('lazy').setup({
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
-      local statusline = require 'mini.statusline'
+      -- local statusline = require 'mini.statusline'
       -- set use_icons to true if you have a Nerd Font
-      statusline.setup { use_icons = vim.g.have_nerd_font }
+      -- statusline.setup { use_icons = vim.g.have_nerd_font }
 
       -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we set the section for
       -- cursor location to LINE:COLUMN
       ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function()
-        return '%2l:%-2v'
-      end
+      -- statusline.section_location = function()
+      -- return '%2l:%-2v'
+      -- end
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
