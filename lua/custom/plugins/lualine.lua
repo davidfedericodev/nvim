@@ -4,19 +4,19 @@ return {
   config = function()
     local lualine = require 'lualine'
 
-    -- Color table for highlights
+    -- Catppuccin Mocha Colors
     local colors = {
-      bg = '#202328',
-      fg = '#bbc2cf',
-      yellow = '#ECBE7B',
-      cyan = '#008080',
-      darkblue = '#081633',
-      green = '#98be65',
-      orange = '#FF8800',
-      violet = '#a9a1e1',
-      magenta = '#c678dd',
-      blue = '#51afef',
-      red = '#ec5f67',
+      bg = '#1E1E2E',
+      fg = '#CDD6F4',
+      yellow = '#F9E2AF',
+      cyan = '#89DCEB',
+      darkblue = '#1E66F5',
+      green = '#A6E3A1',
+      orange = '#FAB387',
+      violet = '#B4BEFE',
+      magenta = '#F5C2E7',
+      blue = '#89B4FA',
+      red = '#F38BA8',
     }
 
     local conditions = {
@@ -61,7 +61,7 @@ return {
       },
     }
 
-    -- Inserisci componenti
+    -- Funzioni per inserire componenti
     local function ins_left(component)
       table.insert(config.sections.lualine_c, component)
     end
