@@ -190,6 +190,9 @@ vim.opt.foldenable = true -- Abilita il folding
 -- Exit with jj
 vim.keymap.set('i', 'jj', '<Esc>', { noremap = true, silent = true })
 
+-- Duplicate line
+vim.keymap.set('v', '<leader>d', 'y`>p', { desc = 'Duplica la selezione sotto' })
+
 -- Select all
 vim.keymap.set('n', '<C-a>', 'gg<S-v>G')
 
