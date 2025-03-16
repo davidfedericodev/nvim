@@ -919,13 +919,21 @@ require('lazy').setup({
     'catppuccin/nvim',
     name = 'catppuccin',
     priority = 1000, -- Make sure to load this before all the other start plugins.
-    init = function()
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'catppuccin-mocha'
+    config = function()
+      require('catppuccin').setup {
+        flavour = 'mocha',
+        transparent_background = true,
+        styles = {
+          comments = { 'italic' },
+          functions = { 'italic' },
+          booleans = { 'italic' },
+        },
+      }
 
-      -- You can configure highlights by doing something like:
+      -- Imposta il tema
+      vim.cmd.colorscheme 'catppuccin'
+
+      -- Puoi configurare highlights specifici se necessario
       vim.cmd.hi 'Comment gui=none'
     end,
   },
