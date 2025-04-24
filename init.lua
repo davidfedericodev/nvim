@@ -131,6 +131,8 @@ vim.opt.smartcase = true
 -- Keep signcolumn on by default
 vim.opt.signcolumn = 'yes'
 
+vim.opt.wrap = false
+
 -- Decrease update time
 vim.opt.updatetime = 250
 
@@ -180,9 +182,10 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Usa Treesitter per il folding
-vim.opt.foldmethod = 'indent'
-vim.opt.foldlevel = 99 -- Mostra tutto aperto di default
-vim.opt.foldenable = true -- Abilita il folding
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldlevel = 99 -- per tenere tutto aperto all'inizio
+vim.opt.foldenable = true
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -231,7 +234,18 @@ vim.keymap.set('n', '<Tab>', ':BufferLineCycleNext<CR>', { noremap = true, silen
 vim.keymap.set('n', '<S-Tab>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
 
 -- Open alpha with leader a
-vim.api.nvim_set_keymap('n', '<leader>a', ':Alpha<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>a', ':Alpha<CR>', { noremap = true, silent = true })
+
+-- Comments with leader + c
+vim.keymap.set('n', '<leader>c', function()
+  local commentstring = vim.bo.commentstring:gsub('%%s', '')
+  vim.api.nvim_feedkeys('o' .. commentstring .. ' ', 'n', true)
+end, { desc = 'Nuovo commento sotto' })
+
+vim.keymap.set('n', '<leader>C', function()
+  local commentstring = vim.bo.commentstring:gsub('%%s', '')
+  vim.api.nvim_feedkeys('O' .. commentstring .. ' ', 'n', true)
+end, { desc = 'Nuovo commento sopra' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -911,6 +925,16 @@ require('lazy').setup({
     end,
   },
 
+  -- {
+  --   'folke/tokyonight.nvim',
+  --   name = 'tokyonight',
+  --   priority = 1000,
+  --   config = function()
+  --     -- Puoi scegliere lo stile: 'storm', 'moon', 'night', o 'day'
+  --     vim.cmd.colorscheme 'tokyonight-moon'
+  --   end,
+  -- },
+
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
@@ -919,25 +943,16 @@ require('lazy').setup({
     'catppuccin/nvim',
     name = 'catppuccin',
     priority = 1000, -- Make sure to load this before all the other start plugins.
-    config = function()
-      require('catppuccin').setup {
-        flavour = 'mocha',
-        transparent_background = true,
-        styles = {
-          comments = { 'italic' },
-          functions = { 'italic' },
-          booleans = { 'italic' },
-        },
-      }
+    init = function()
+      -- Load the colorscheme here.
+      -- Like many other themes, this one has different styles, and you could load
+      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+      vim.cmd.colorscheme 'catppuccin-mocha'
 
-      -- Imposta il tema
-      vim.cmd.colorscheme 'catppuccin'
-
-      -- Puoi configurare highlights specifici se necessario
+      -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
     end,
   },
-
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
