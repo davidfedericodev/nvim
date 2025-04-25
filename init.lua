@@ -714,6 +714,7 @@ require('lazy').setup({
         tailwindcss = {},
         html = {},
         cssls = {},
+        angularls = {},
         --
 
         lua_ls = {
