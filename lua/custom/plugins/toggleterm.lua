@@ -15,12 +15,12 @@ return {
     close_on_exit = true, -- Chiude il terminale alla chiusura del processo
     shell = vim.o.shell, -- Shell predefinita
     float_opts = {
-      border = 'single', -- Stile del bordo della finestra flottante
+      border = 'curved', -- Stile del bordo della finestra flottante
       winblend = 0, -- Trasparenza della finestra
     },
     highlights = {
       FloatBorder = {
-        guifg = '#A6E3A1', -- Cambia il colore del bordo (esempio: rosa in stile Dracula)
+        guifg = '#c4a7e7', -- Cambia il colore del bordo (esempio: rosa in stile Dracula)
         guibg = 'None', -- Mantieni lo sfondo trasparente
       },
       NormalFloat = {
