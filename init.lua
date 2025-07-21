@@ -187,6 +187,8 @@ vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldlevel = 99 -- per tenere tutto aperto all'inizio
 vim.opt.foldenable = true
 
+vim.opt.guicursor = ''
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
